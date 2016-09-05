@@ -19,6 +19,10 @@ def add_numbers():
     b = request.args.get('b', 0, type=int)
     return jsonify(result = a + b)
 
+@app.route('/_display_folders')
+def get_folder_name(default_path='../BalanceAnalyser/data'):
+    return jsonify(os.listdir(default_path))
+
 if __name__ == "__main__":
-    print os.listdir('../BalanceAnalyser/data')
+
     app.run(host='0.0.0.0',port=5000,debug=True)
