@@ -24,5 +24,4 @@ def get_folder_name(default_path='../BalanceAnalyser/data'):
     return jsonify(os.listdir(default_path))
 
 if __name__ == "__main__":
-
     app.run(host='0.0.0.0',port=5000,debug=True)
