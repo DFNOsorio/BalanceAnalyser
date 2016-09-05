@@ -7,6 +7,5 @@ $(document).ready(function () {
 });
 
 function present_folders(data){
-    console.log(data);
     console.log(folder_names);
 }
