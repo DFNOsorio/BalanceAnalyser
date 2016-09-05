@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, jsonify, render_template, request
+import os
 
-from connector import *
 
 app = Flask(__name__)
 
@@ -11,7 +11,6 @@ def index():
 
 @app.route("/sara")
 def sara():
-    printHey()
     return render_template("sara.html")
 
 @app.route('/_add_numbers')
@@ -21,5 +20,5 @@ def add_numbers():
     return jsonify(result = a + b)
 
 if __name__ == "__main__":
+    print os.listdir('../BalanceAnalyser/data')
     app.run(host='0.0.0.0',port=5000,debug=True)
-    
