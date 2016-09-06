@@ -1,0 +1,27 @@
+body {
+    height: 100%;
+    background: #efeeea;
+    background: linear-gradient(#f9f9f9, #cecbc4);
+    color: #757575;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    text-align: center;
+}
+
+.container{
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    display:inline-block;
+    margin:0px 10px 5px 5px;
+    vertical-align:top;
+}
+
+.progressbar {
+    color: #fff;
+    text-align: right;
+    height: 25px;
+    width: 0;
+    background-color: #0ba1b5;
+    border-radius: 3px;
+}

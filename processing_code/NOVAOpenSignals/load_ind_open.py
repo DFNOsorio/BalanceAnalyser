@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from code.NOVAOpenSignals import *
+from processing_code.NOVAOpenSignals import *
 
 
 def load_open_trial(name_of_file):

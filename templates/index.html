@@ -1,8 +1,10 @@
 <head>
+
     <head>
-        <script src={{ url_for('static', filename='./lib/js/jquery-3.1.0.js')}} language="javascript" type="text/javascript" ></script>
-        <script language="javascript" type="text/javascript" src={{ url_for('static', filename='./lib/js/d3.js')}}></script>
-        <script language="javascript" type="text/javascript" src={{ url_for('static', filename='./lib/js/index.js')}}></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./lib/css/index.css') }}">
+        <script src={{ url_for( 'static', filename='./lib/js/jquery-3.1.0.js' )}} language="javascript" type="text/javascript"></script>
+        <script language="javascript" type="text/javascript" src={{ url_for( 'static', filename='./lib/js/d3.js' )}}></script>
+        <script language="javascript" type="text/javascript" src={{ url_for( 'static', filename='./lib/js/index.js' )}}></script>
     </head>
 </head>
 
@@ -10,6 +12,11 @@
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
-    <div id="FolderList">
+    <div id="FolderList"> </div>
+    <div class="container">
+        <div class="progressbar">
+        </div>
     </div>
+    <div id="LoadingStatus"> Loading</div>
+    <button id="button"> Next </button>
 </body>

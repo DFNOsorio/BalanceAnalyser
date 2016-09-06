@@ -1,6 +1,6 @@
 import numpy as np
 
-from code.NOVAWiiBoard.config import *
+from processing_code.NOVAWiiBoard.config import *
 
 
 def time_reshape(time_vector):

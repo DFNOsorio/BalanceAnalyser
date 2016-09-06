@@ -1,6 +1,6 @@
-from code.Processing.frequency_functions import *
-from code.NOVAOpenSignals.EMG_stats import *
-from code.NOVAWiiBoard.COPStats import *
+from processing_code.Processing.frequency_functions import *
+from processing_code.NOVAOpenSignals.EMG_stats import *
+from processing_code.NOVAWiiBoard.COPStats import *
 import copy
 # import pynotify
 from novainstrumentation import smooth
@@ -155,7 +155,6 @@ def smooth_intervals(data, data_var="open_signals_data", new_var="smoothed_data"
         EMGs = data[i].get_variable(data_var)
         emg_smooth = [EMGs[0]]
         for j in range(1, 5):
-            print "segment", i + 1, ", electrode", j
             current_EMG = EMGs[j]
             emg_smooth.append(emg_smoother(current_EMG, window))
         data[i].add_variable(new_var, emg_smooth)
@@ -240,7 +239,6 @@ def add_EMG_RMS(data, window_size=1000, data_var="open_signals_data", new_var="e
         emg_rms = []
         EMGs = data[i].get_variable(data_var)
         for j in range(1, 5):
-            print "segment", i+1, ", electrode", j
             current_EMG = EMGs[j]
             RMS = RMS_moving_window(current_EMG, window_size)
             emg_rms.append(RMS)
@@ -262,7 +260,6 @@ def add_EMG_stat(data, window_size=1000, data_var = "open_signals_data", new_var
         current_time = EMGs[0]
         for j in range(1, 5):
 
-            print "segment", i + 1, ", electrode", j
             current_EMG = EMGs[j]
             positive_indexes = np.where(np.array(current_EMG) > 0)[0]
             emg_rms.append([list(np.array(current_EMG)[positive_indexes]), list(np.array(current_time)[positive_indexes])])
