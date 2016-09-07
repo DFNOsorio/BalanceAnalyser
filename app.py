@@ -2,8 +2,9 @@ from flask import Flask
 from flask import render_template, jsonify, request, Response, redirect, url_for
 import os
 from processing_code import *
-
-
+from bokeh.embed import components
+from bokeh.plotting import figure, output_file, show
+import json
 app = Flask(__name__)
 
 default_path = '../BalanceAnalyser/data'
@@ -71,6 +72,32 @@ def get_cache_data():
     global emg_smoother_window
     return jsonify([filter_frequency, emg_smoother_window])
 
+@app.route('/_make_graph')
+def make_graph():
+    # prepare some data
+    x = [1, 2, 3, 4, 5]
+    y = [6, 7, 2, 4, 5]
+
+    # output to static HTML file
+    output_file("lines.html")
+
+    # create a new plot with a title and axis labels
+    p = figure(title="simple line example", x_axis_label='x', y_axis_label='y')
+
+    # add a line renderer with legend and line thickness
+    p.line(x, y, legend="Temp.", line_width=2)
+
+    show(p)
+
+    plot = figure()
+    plot.circle([1,2], [3,4])
+
+    script, div = components(plot)
+
+    data = {'script'  : script, 'div' : div}
+    js = json.dumps(data)
+    resp = Response(js, status=200, mimetype='application/json')
+    return resp
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True)
