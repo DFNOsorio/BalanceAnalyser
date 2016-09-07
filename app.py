@@ -1,12 +1,10 @@
 from flask import Flask
-from flask import render_template, jsonify, render_template, request,  Response
+from flask import render_template, jsonify, request, Response, redirect, url_for
 import os
 from processing_code import *
 
 
 app = Flask(__name__)
-
-
 
 default_path = '../BalanceAnalyser/data'
 global folder
@@ -24,9 +22,9 @@ global filter_frequency
 def index():
     return render_template("index.html")
 
-@app.route("/sara")
-def sara():
-    return render_template("sara.html")
+@app.route("/graph")
+def graphs():
+    return render_template("graphs.html")
 
 @app.route('/_add_numbers')
 def add_numbers():
@@ -66,6 +64,12 @@ def cache_data():
     [[s1, s2, s3, s4], filter_frequency, emg_smoother_window]= get_val()
     print filter_frequency
     return 'done'
+
+@app.route('/_get_cache_data')
+def get_cache_data():
+    global filter_frequency
+    global emg_smoother_window
+    return jsonify([filter_frequency, emg_smoother_window])
 
 
 if __name__ == "__main__":

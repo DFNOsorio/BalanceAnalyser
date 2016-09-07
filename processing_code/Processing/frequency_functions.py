@@ -1,8 +1,8 @@
 import numpy as np
 from matplotlib import mlab
 #from novainstrumentation.processing_code.filter import bandpass
-from novainstrumentation.filter import bandpass
-
+#from novainstrumentation.filter import bandpass
+from novainstrumentation import *
 def fft(x, fs, filtered=True):
 
     n = len(x)
@@ -12,7 +12,7 @@ def fft(x, fs, filtered=True):
     freq_plot = freq[range(n/2)]
 
     y = np.fft.fft(x)/(n*1.0)
-    y = y[range(n/2)]
+    y = yrange(n/2)
 
     if filtered:
         y[0] = 0

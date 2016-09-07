@@ -4,7 +4,9 @@ $(document).ready(function () {
     $.getJSON($SCRIPT_ROOT + '/_display_folders', {}, function (data) {
         folder_names = data;
         list_folders(folder_names);
-    })
+    });
+
+    $('#button').click(function(){window.location.href = $GraphPageLocation});
 });
 
 function list_folders(data) {
@@ -41,9 +43,11 @@ function load_data(current_folder_name) {
 
             }
             else if (event.data == 'Close') {
-                $.getJSON($SCRIPT_ROOT + '/_cache_data')
+                $.getJSON($SCRIPT_ROOT + '/_cache_data');
                 source.close();
+                $.getJSON($SCRIPT_ROOT + '/graph');
                 $('#button').attr('disabled', false);
+
             }
             else {
                 tempJSON = JSON.parse(event.data)

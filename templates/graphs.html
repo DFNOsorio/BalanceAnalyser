@@ -1,0 +1,14 @@
+<head>
+    <script src={{ url_for('static', filename='./lib/js/jquery-3.1.0.js')}} language="javascript" type="text/javascript" ></script>
+    <script language="javascript" type="text/javascript" src={{ url_for('static', filename='./lib/js/d3.js')}}></script>        <script language="javascript" type="text/javascript" src={{ url_for('static', filename='./lib/js/graphs.js')}}></script>
+</head>
+
+<body>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <div data-role="page" id="welcome">
+        Hey
+    </div>
+    <div id='Frequency'></div>
+</body>
