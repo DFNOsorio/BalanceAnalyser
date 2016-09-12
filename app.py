@@ -4,6 +4,7 @@ import os
 from processing_code import *
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
+from bokeh.model import *
 import json
 app = Flask(__name__)
 
@@ -79,7 +80,6 @@ def make_graph():
     y = [6, 7, 2, 4, 5]
 
     # output to static HTML file
-    output_file("lines.html")
 
     # create a new plot with a title and axis labels
     p = figure(title="simple line example", x_axis_label='x', y_axis_label='y')
@@ -92,9 +92,10 @@ def make_graph():
     plot = figure()
     plot.circle([1,2], [3,4])
 
-    script, div = components(plot)
 
-    data = {'script'  : script, 'div' : div}
+    script, div = components(plot, wrap_script=False)
+
+    data = {'script'  : script, 'div' : div, 'jsons': plot.to_json(True)}
     js = json.dumps(data)
     resp = Response(js, status=200, mimetype='application/json')
     return resp
